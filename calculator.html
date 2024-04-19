@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">                                <title>Calculator</title>
+<style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        #calculator-container {
+            border: 2px solid #ccc;
+            border-radius: 30px;
+            padding: 20px;
+            border-color: black;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color:darkgrey; 
+
+        }
+
+        table tr:nth-child(1) {
+            padding: 0;
+        }
+
+        table td {
+            padding: 35px;
+            cursor: pointer;
+        }
+
+        table td:hover {
+            background-color:#f0f0f0 ;
+        }
+    </style>
+    </head>
+    <body>
+    <div id="calculator-container">
+        <table cellpadding="30" border="1" cellspacing="0">
+            <tr>
+                <td colspan="4"><input type="text" id="input"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center" onclick="c()">AC</td>
+                <td onclick="del()">Del</td>
+                <td onclick="insertNum('*')">*</td>
+            </tr>
+            <tr>
+                <td onclick="insertNum(7)">7</td>
+                <td onclick="insertNum(8)">8</td>
+                <td onclick="insertNum(9)">9</td>
+                <td onclick="insertNum('/')">/</td>
+            </tr>
+            <tr>
+                <td onclick="insertNum(4)">4</td>
+                <td onclick="insertNum(5)">5</td>
+                <td onclick="insertNum(6)">6</td>
+                <td onclick="insertNum('-')">-</td>
+            </tr>
+            <tr>
+                <td onclick="insertNum(1)">1</td>
+                <td onclick="insertNum(2)">2</td>
+                <td onclick="insertNum(3)">3</td>
+                <td onclick="insertNum('+')">+</td>
+            </tr>
+            <tr>
+                <td onclick="insertNum(0)">0</td>
+                <td onclick="insertNum('.')">.</td>
+                <td colspan="2" align="center" onclick="eql()">=</td>
+            </tr>
+        </table>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+    function insertNum(num) {
+        let olddata = $("#input").val();
+        $("input").val(olddata + num);
+    }
+
+    function eql() {
+        let res=eval($("#input").val());
+        $("#input").val(res);
+    }
+
+    function del() {
+        let value = $("#input").val();
+        let newdata = value.substring(0,value.length-1)
+        $("#input").val(newdata);
+    }
+</script>
+</body>
+</html>
